@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Sergei Mozolevsky](https://up.htmlacademy.ru/javascript/8/user/161511).
-* Наставник: `Неизвестно`.
+* Наставник: [Давид Классен] (https://up.htmlacademy.ru/javascript/8/user/329651).
 
 ---
 
