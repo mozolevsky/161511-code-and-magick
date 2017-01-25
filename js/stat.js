@@ -4,7 +4,7 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
   ctx.fillRect(110, 20, 420, 270);
 
-  ctx.fillStyle = "fff";
+  ctx.fillStyle = "#fff";
   ctx.fillRect(100, 10, 420, 270);
 
   ctx.fillStyle = "#000";
@@ -33,7 +33,7 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillStyle = "#000";
     ctx.font = "16px PT Mono";
     ctx.textBaseline = "hanging";
-    ctx.fillText(timeI.toFixed(0), columnCoordinateX, (220 - getColumnHeight(time, timeMax)));
+    ctx.fillText(time.toFixed(0), columnCoordinateX, (220 - getColumnHeight(time, timeMax)));
     ctx.fillText(name, columnCoordinateX, 250);
   }
 
@@ -50,7 +50,7 @@ window.renderStatistics = function (ctx, names, times) {
 
 };
 
-var canvas = document.querySelector('canvas');
+
 
 
 
