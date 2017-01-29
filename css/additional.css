@@ -1,7 +1,5 @@
 
-.alert-error {
-  margin-left: 60px;
-  color: red;
-  font-size: 10px;
+input:required:invalid {
+  border: 1px solid red;
 }
 
