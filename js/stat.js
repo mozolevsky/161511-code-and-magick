@@ -29,11 +29,11 @@ window.renderStatistics = function (ctx, names, times) {
 
   function drawColumn(name, time) {
     ctx.fillStyle = getColumnColor(name);
-    ctx.fillRect(columnCoordinateX, (240 - getColumnHeight(time, timeMax)), widthColumn, getColumnHeight(time, timeMax));
+    ctx.fillRect(columnCoordinateX, (240 - getColumnHeight(time)), widthColumn, getColumnHeight(time));
     ctx.fillStyle = "#000";
     ctx.font = "16px PT Mono";
     ctx.textBaseline = "hanging";
-    ctx.fillText(time.toFixed(0), columnCoordinateX, (220 - getColumnHeight(time, timeMax)));
+    ctx.fillText(time.toFixed(0), columnCoordinateX, (220 - getColumnHeight(time)));
     ctx.fillText(name, columnCoordinateX, 250);
   }
 
@@ -47,7 +47,6 @@ window.renderStatistics = function (ctx, names, times) {
     drawColumn(names[i], times[i]);
     columnCoordinateX = columnCoordinateX + widthColumn + spaceBetweenColumns;
   }
-
 };
 
 
