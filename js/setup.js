@@ -21,15 +21,10 @@ var colorsOfTheEyes = ['black', 'red', 'blue', 'yellow', 'green'];
 var fireBall = getElement('.setup-fireball-wrap');
 var fireBallColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
-function showElement(element) {
-  element.classList.remove('invisible');
-  element.setAttribute('aria-hidden', false);
-}
-
-function hideElement(element) {
-  element.classList.add('invisible');
-  element.setAttribute('aria-hidden', true);
-}
+fireBallColors = fireBallColors.map(function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return 'rgb(' + parseInt(result[1], 16) + ', ' + parseInt(result[1], 16) + ', ' + parseInt(result[3], 16) + ')';
+});
 
 var checkKeyCode = function (evt, key) {
   return (evt.keyCode && evt.keyCode === key);
@@ -38,20 +33,20 @@ var checkKeyCode = function (evt, key) {
 var listenEscOnWizardForm = function () {
   document.addEventListener('keydown', function (event) {
     if (checkKeyCode(event, ESC_KEY_CODE)) {
-      hideElement(wizardForm);
+      window.display.hide(wizardForm);
       userIcon.setAttribute('aria-pressed', false);
     }
   });
 };
 
 userIcon.addEventListener('click', function () {
-  showElement(wizardForm);
+  window.display.show(wizardForm);
   listenEscOnWizardForm();
 });
 
 userIcon.addEventListener('keydown', function (event) {
   if (checkKeyCode(event, ENTER_KEY_CODE)) {
-    showElement(wizardForm);
+    window.display.show(wizardForm);
     listenEscOnWizardForm();
     userIcon.setAttribute('aria-pressed', true);
   }
@@ -59,42 +54,28 @@ userIcon.addEventListener('keydown', function (event) {
 
 wizardFormClose.addEventListener('keydown', function (event) {
   if (checkKeyCode(event, ENTER_KEY_CODE)) {
-    hideElement(wizardForm);
+    window.display.hide(wizardForm);
     userIcon.setAttribute('aria-pressed', false);
   }
 });
 
 wizardFormClose.addEventListener('click', function () {
-  hideElement(wizardForm);
+  window.display.hide(wizardForm);
   userIcon.setAttribute('aria-pressed', false);
 });
 
-wizardCoat.addEventListener('click', function () {
-  wizardCoat.style.fill = getColor(colorsOfTheCoat);
-});
-
-wizardEyes.addEventListener('click', function () {
-  wizardEyes.style.fill = getColor(colorsOfTheEyes);
-});
-
-fireBall.addEventListener('click', function () {
-  fireBall.style.background = getColor(fireBallColors);
-});
+window.colorizeElement(wizardCoat, colorsOfTheCoat, 'fill');
+window.colorizeElement(wizardEyes, colorsOfTheEyes, 'fill');
+window.colorizeElement(fireBall, fireBallColors, 'background-color');
 
 wizardFormSaveBtn.addEventListener('click', function () {
-  hideElement(wizardForm);
+  window.display.hide(wizardForm);
   userIcon.setAttribute('aria-pressed', false);
 });
 
 wizardFormSaveBtn.addEventListener('keydown', function () {
   if (checkKeyCode(event, ENTER_KEY_CODE)) {
-    hideElement(wizardForm);
+    window.display.hide(wizardForm);
     userIcon.setAttribute('aria-pressed', false);
   }
 });
-
-function getColor(colorsArray) {
-  var randomColor = Math.floor(Math.random() * colorsArray.length);
-  return colorsArray[randomColor];
-}
-
