@@ -1,6 +1,7 @@
 'use strict';
 
 (function (exports) {
+
   exports.show = function (element) {
     element.classList.remove('invisible');
     element.setAttribute('aria-hidden', false);
